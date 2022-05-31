@@ -4,7 +4,7 @@ import numpy as np
 sys.path.append('/home/brayan/mnsun/')
 from utils import check_dir
 
-levels = ["200","850"]
+levels = np.array([200,850])
 MODELS = {"BOM":{"reforecast":{"perturbed":{"2m_above_ground"      :{"2t"  :{"LA": np.arange(0.5,61.5+1,1) ,"M" : np.arange(1,32+1,1)}},
                                             "atmos_column"         :{"tcc" :{"LA": np.arange(0.5,61.5+1,1) ,"M" : np.arange(1,32+1,1)}},
                                             "sfc_precip"           :{"tp"  :{"L1": np.arange(1,62+1,1)     ,"M" : np.arange(1,32+1,1)}},
@@ -295,19 +295,19 @@ MODELS = {"BOM":{"reforecast":{"perturbed":{"2m_above_ground"      :{"2t"  :{"LA
                                                                       "v"   :{"L": np.arange(0,31+1,1),"M" : np.arange(1,40+1,1),"P":levels}
                                                                       },                                                            
                                              },
-                                "control"  :{"2m_above_ground"      :{"2t"  :{"LA": np.arange(0.5,30.5+1,1),"M" : np.arange(1,40+1,1)}},
-                                             "atmos_column"         :{"tcc" :{"LA": np.arange(0.5,30.5+1,1),"M" : np.arange(1,40+1,1)}},
-                                             "sfc_precip"           :{"tp"  :{"L": np.arange(0,31+1,1)    ,"M" : np.arange(1,40+1,1)}},
-                                             "sfc_pressure"         :{"msl" :{"L": np.arange(0,31+1,1)     ,"M" : np.arange(1,40+1,1)}},
-                                             "sfc_temperature"      :{"wtmp":{"LA": np.arange(0.5,30.5+1,1),"M" : np.arange(1,40+1,1)}},
-                                             "10m_above_ground"     :{"10u"   :{"L": np.arange(0,31+1,1)     ,"M" : np.arange(1,40+1,1)},
-                                                                      "10v"   :{"L": np.arange(0,31+1,1)     ,"M" : np.arange(1,40+1,1)}
+                                "control"  :{"2m_above_ground"      :{"2t"  :{"LA": np.arange(0.5,30.5+1,1)}},
+                                             "atmos_column"         :{"tcc" :{"LA": np.arange(0.5,30.5+1,1)}},
+                                             "sfc_precip"           :{"tp"  :{"L": np.arange(0,31+1,1)    }},
+                                             "sfc_pressure"         :{"msl" :{"L": np.arange(0,31+1,1)    }},
+                                             "sfc_temperature"      :{"wtmp":{"LA": np.arange(0.5,30.5+1,1)}},
+                                             "10m_above_ground"     :{"10u"   :{"L": np.arange(0,31+1,1)   },
+                                                                      "10v"   :{"L": np.arange(0,31+1,1)   }
                                                                       },                                               
-                                             "pressure_level_2"     :{"gh"  :{"L": np.arange(0,31+1,1),"M" : np.arange(1,40+1,1),"P":levels},
-                                                                      "t"   :{"L": np.arange(0,31+1,1),"M" : np.arange(1,40+1,1),"P":levels}
+                                             "pressure_level_2"     :{"gh"  :{"L": np.arange(0,31+1,1),"P":levels},
+                                                                      "t"   :{"L": np.arange(0,31+1,1),"P":levels}
                                                                       },
-                                             "pressure_level_wind"  :{"u"   :{"L": np.arange(0,31+1,1),"M" : np.arange(1,40+1,1),"P":levels},
-                                                                      "v"   :{"L": np.arange(0,31+1,1),"M" : np.arange(1,40+1,1),"P":levels}
+                                             "pressure_level_wind"  :{"u"   :{"L": np.arange(0,31+1,1),"P":levels},
+                                                                      "v"   :{"L": np.arange(0,31+1,1),"P":levels}
                                                                       },                                                            
                                              }
                                }
@@ -484,19 +484,19 @@ MODELS = {"BOM":{"reforecast":{"perturbed":{"2m_above_ground"      :{"2t"  :{"LA
                                                                       },                                                            
                                              },
                                  "control"  :{"2m_above_ground"      :{"2t"  :{"LA": np.arange(0.5,43.5+1,1)}},
-                                              "atmos_column"         :{"tcc" :{"LA": np.arange(0.5,43.5+1,1)}},
+                                              "atmos_column"         :{"tcc" :{"LB": np.arange(1.5,43.5+1,1)}},
                                               "sfc_precip"           :{"tp"  :{"L1": np.arange(1,44+1,1)     }},
                                               "sfc_pressure"         :{"msl" :{"L": np.arange(0,44+1,1)     }},
                                               "sfc_temperature"      :{"wtmp":{"LB": np.arange(1.5,43.5+1,1)}},
-                                              "10m_above_ground"     :{"10u"   :{"L": np.arange(0,44+1,1)     },
-                                                                       "10v"   :{"L": np.arange(0,44+1,1)     }
+                                              "10m_above_ground"     :{"10u"   :{"L1": np.arange(1,44+1,1)     },
+                                                                       "10v"   :{"L1": np.arange(1,44+1,1)     }
                                                                        },                                               
-                                              "pressure_level_1"     :{"q"   :{"L": np.arange(0,44+1,1)     ,"P2":levels}},
-                                              "pressure_level_2"     :{"gh"  :{"L": np.arange(0,44+1,1)     ,"P":levels},
-                                                                       "t"   :{"L": np.arange(0,44+1,1)     ,"P":levels}
+                                              "pressure_level_1"     :{"q"   :{"L": np.arange(1,44+1,1)     ,"P2":levels}},
+                                              "pressure_level_2"     :{"gh"  :{"L": np.arange(1,44+1,1)     ,"P":levels},
+                                                                       "t"   :{"L": np.arange(1,44+1,1)     ,"P":levels}
                                                                        },
-                                              "pressure_level_wind"  :{"u"   :{"L": np.arange(0,44+1,1)     ,"P":levels},
-                                                                       "v"   :{"L": np.arange(0,44+1,1)     ,"P":levels}
+                                              "pressure_level_wind"  :{"u"   :{"L": np.arange(1,44+1,1)     ,"P":levels},
+                                                                       "v"   :{"L": np.arange(1,44+1,1)     ,"P":levels}
                                                                        },                                                            
                                               }
                                 }
@@ -570,10 +570,10 @@ MODELS = {"BOM":{"reforecast":{"perturbed":{"2m_above_ground"      :{"2t"  :{"LA
                  },                    
          }
 
-key        = "8ce7889cae88571d734728da60220887b54e6fe6b34b0c69d103cf5d15a5dfb46efad7aba040f67308d612df7d10d63a2be93915"
+key        = "ed3e15548b647cc51b8cdaee89812de38c160d9a0556ab8ada7279cd87e7b5b19a22451393eb7f10c3c4bcc58c803c2c31acb2ac"
 dataset    = ["10m_above_ground"]
 BASE       = "https://iridl.ldeo.columbia.edu/SOURCES/.ECMWF/.S2S/.{MODEL_NAME}/.{TYPE_SIMULATION}/.{TYPE_INIT}/.{VARIABLE_CATEGORY}/.{VARIABLE_SUBCATEGORY}"
-OUTPUT_DIR = "/media/brayan/DATA/S2S/raw_data"
+OUTPUT_DIR = "/home/brayan/DATA/S2S/raw_data"
 comm_line  = "curl -k -b '__dlauth_id="+key+"' '{URL}' > {PATHFILE}"
 
 for model_name, v_1 in MODELS.items():
@@ -595,22 +595,42 @@ for model_name, v_1 in MODELS.items():
                                              )
                         des = list(v_5.keys())
                         for x,m in enumerate(v_5[des[0]]):  #number Lead
-                            if 2 == len(des):
+                            if 1 == len(des):
+                                url      = IRI_DES + f"/{des[0]}/({str(m)})/VALUES/data.nc"
+                                pathfile = OUTPUT_DIR+"/"+dir_model+"/"+type_sim+"/"+type_ini+"/"+f"{var_cat}.{sub_cat}"+"/"+ \
+                                           f"{var_cat}_{sub_cat}"+"_"+des[0]+str(x)+".nc"
+                                f.write(comm_line.format(URL = url, PATHFILE = pathfile)+ "\n") 
+
+                            else:
                                 for y,l in enumerate(v_5[des[1]]): #number M
-                                    if 3 == len(des):
+                                    if 2 == len(des):
+                                        url      = IRI_DES + f"/{des[0]}/({str(m)})/VALUES/{des[1]}/({str(l)})/VALUES/data.nc"
+                                        pathfile = OUTPUT_DIR+"/"+dir_model+"/"+type_sim+"/"+type_ini+"/"+f"{var_cat}.{sub_cat}"+"/"+ \
+                                                   f"{var_cat}_{sub_cat}"+"_"+des[0]+str(x)+"_"+des[1]+str(y)+".nc"
+                                        f.write(comm_line.format(URL = url, PATHFILE = pathfile)+ "\n")     
+                                    else:
                                         for z,p in enumerate(v_5[des[2]]):   #number P levels
                                             url      = IRI_DES + f"/{des[0]}/({str(m)})/VALUES/{des[1]}/({str(l)})/VALUES/{des[2]}/({p})/VALUES/data.nc"
                                             pathfile = OUTPUT_DIR+"/"+dir_model+"/"+type_sim+"/"+type_ini+"/"+f"{var_cat}.{sub_cat}"+"/"+ \
                                                        f"{var_cat}_{sub_cat}"+"_"+des[0]+str(x)+"_"+des[1]+str(y)+"_"+des[2]+str(z)+".nc"
-                                            f.write(comm_line.format(URL = url, PATHFILE = pathfile)+ "\n")
-                                    else:
-                                        url      = IRI_DES + f"/{des[0]}/({str(m)})/VALUES/{des[1]}/({str(l)})/VALUES/data.nc"
-                                        pathfile = OUTPUT_DIR+"/"+dir_model+"/"+type_sim+"/"+type_ini+"/"+f"{var_cat}.{sub_cat}"+"/"+ \
-                                                   f"{var_cat}_{sub_cat}"+"_"+des[0]+str(x)+"_"+des[1]+str(y)+".nc"
-                                        f.write(comm_line.format(URL = url, PATHFILE = pathfile)+ "\n")                                        
-                            else:
-                                url      = IRI_DES + f"/{des[0]}/({str(m)})/VALUES/data.nc"
-                                pathfile = OUTPUT_DIR+"/"+dir_model+"/"+type_sim+"/"+type_ini+"/"+f"{var_cat}.{sub_cat}"+"/"+ \
-                                           f"{var_cat}_{sub_cat}"+"_"+des[0]+str(x)+".nc"
-                                f.write(comm_line.format(URL = url, PATHFILE = pathfile)+ "\n")                                                 
+                                            f.write(comm_line.format(URL = url, PATHFILE = pathfile)+ "\n")                                   
+
+                            # if 2 == len(des):
+                            #     for y,l in enumerate(v_5[des[1]]): #number M
+                            #         if 3 == len(des):
+                            #             for z,p in enumerate(v_5[des[2]]):   #number P levels
+                            #                 url      = IRI_DES + f"/{des[0]}/({str(m)})/VALUES/{des[1]}/({str(l)})/VALUES/{des[2]}/({p})/VALUES/data.nc"
+                            #                 pathfile = OUTPUT_DIR+"/"+dir_model+"/"+type_sim+"/"+type_ini+"/"+f"{var_cat}.{sub_cat}"+"/"+ \
+                            #                            f"{var_cat}_{sub_cat}"+"_"+des[0]+str(x)+"_"+des[1]+str(y)+"_"+des[2]+str(z)+".nc"
+                            #                 f.write(comm_line.format(URL = url, PATHFILE = pathfile)+ "\n")
+                            #         else:
+                            #             url      = IRI_DES + f"/{des[0]}/({str(m)})/VALUES/{des[1]}/({str(l)})/VALUES/data.nc"
+                            #             pathfile = OUTPUT_DIR+"/"+dir_model+"/"+type_sim+"/"+type_ini+"/"+f"{var_cat}.{sub_cat}"+"/"+ \
+                            #                        f"{var_cat}_{sub_cat}"+"_"+des[0]+str(x)+"_"+des[1]+str(y)+".nc"
+                            #             f.write(comm_line.format(URL = url, PATHFILE = pathfile)+ "\n")                                        
+                            # else:
+                            #     url      = IRI_DES + f"/{des[0]}/({str(m)})/VALUES/data.nc"
+                            #     pathfile = OUTPUT_DIR+"/"+dir_model+"/"+type_sim+"/"+type_ini+"/"+f"{var_cat}.{sub_cat}"+"/"+ \
+                            #                f"{var_cat}_{sub_cat}"+"_"+des[0]+str(x)+".nc"
+                            #     f.write(comm_line.format(URL = url, PATHFILE = pathfile)+ "\n")                                                                                 
 
